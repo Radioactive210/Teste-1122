@@ -1,0 +1,54 @@
+/* Estilos específicos para a página Explore */
+.emission-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.emission-card {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.emission-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.emission-card.alpha {
+    border: 1px solid #0084F7;
+}
+
+.emission-card.alpha:before {
+    background: #0084F7;
+}
+
+.emission-card.beta {
+    border: 1px solid #00F7A5;
+}
+
+.emission-card.beta:before {
+    background: #00F7A5;
+}
+
+.emission-card.gamma {
+    border: 1px solid #F70094;
+}
+
+.emission-card.gamma:before {
+    background: #F70094;
+}
+
+/* ... (mantenha os outros estilos específicos da página Explore) */

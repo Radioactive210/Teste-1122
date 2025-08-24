@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Anatomia do Ser Radioativo</title>
+    <!-- FAVICON ICON -->
+    <link rel="apple-touch-icon" sizes="180x180" href="image/asset/Atom_01_Icon___Hugeicons_Pro-removebg-preview.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/asset/Atom_01_Icon___Hugeicons_Pro-removebg-preview.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/asset/Atom_01_Icon___Hugeicons_Pro-removebg-preview.png">
+    <link rel="shortcut icon" href="image/asset/Atom_01_Icon___Hugeicons_Pro-removebg-preview.png" type="image/x-icon">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Rubik&display=swap" rel="stylesheet">
+    <!-- FONTAWESOME FONT -->
+    <link href="css/vendor/icofont.min.css" rel="stylesheet">
+    <!-- BOOTSTRAP -->
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <!-- MAIN CSS -->
+    <link href="css/dark.css" rel="stylesheet">
+    <!-- EXPLORE CSS -->
+    <link href="css/explore.css" rel="stylesheet">
+    <style>
+        /* Estilos unificados */
+        .energy-quote {
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.4;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 4px solid #f7bd00fb;
+        }
+        
+        .energy-section {
+            margin: 0 0 4rem 0; /* Padroniza margem inferior apenas */
+            padding: 3rem 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .energy-section:last-child {
+            border-bottom: none;
+        }
+        
+        .energy-section:before {
+            content: "⚛️";
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.05;
+            top: -1rem;
+            right: 2rem;
+            z-index: -1;
+        }
+        
+        .energy-type, .emission-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .energy-type:hover, .emission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .energy-type.alpha, .emission-card.alpha {
+            border-color: #0084F7;
+        }
+        
+        .energy-type.beta, .emission-card.beta {
+            border-color: #00F7A5;
+        }
+        
+        .energy-type.gamma, .emission-card.gamma {
+            border-color: #F70094;
+        }
+        
+        .energy-type h3, .emission-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .energy-type h3:before {
+            margin-right: 1rem;
+            font-size: 2rem;
+        }
+        
+       
+        
+        .energy-examples, .mini-detail {
+            background: rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0; /* Margem superior e inferior apenas */
+        }
+        
+        .energy-examples strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f7bd00fb;
+        }
+        
+        .energy-quote-end {
+            font-style: italic;
+            text-align: right;
+            opacity: 0.8;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .energy-anatomy, .emission-types {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .anatomy-card, .emission-card {
+            width: calc(33.333% - 2rem);
+            min-width: 300px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .anatomy-card:before, .emission-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .anatomy-card:nth-child(1):before, .emission-card.alpha:before {
+            background: #0084F7;
+        }
+        
+        .anatomy-card:nth-child(2):before, .emission-card.beta:before {
+            background: #00F7A5;
+        }
+        
+        .anatomy-card:nth-child(3):before, .emission-card.gamma:before {
+            background: #F70094;
+        }
+        
+        .anatomy-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #f7bd00fb;
+        }
+        
+        .conceptual-illustration {
+            text-align: center;
+            margin: 4rem 0;
+            font-family: 'Rubik', sans-serif;
+            font-size: 1.2rem;
+            line-height: 2;
+            background: rgba(0,0,0,0.3);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .radioactive-test {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 4rem 0;
+        }
+        
+        .progress-container {
+            margin: 3rem 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+        
+        .progress-fill.alpha {
+            background: #0084F7;
+        }
+        
+        .progress-fill.beta {
+            background: #00F7A5;
+        }
+        
+        .progress-fill.gamma {
+            background: #F70094;
+        }
+        
+        .download-guide {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 992px) {
+            .energy-quote {
+                font-size: 1.8rem;
+            }
+            
+            .anatomy-card, .emission-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navigation-wrap" data-offset="1">
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    
+    <!-- MAIN WRAP -->
+    <div class="main-wrap" style="opacity:0;transition:opacity 0.5s ease">
+        <!-- HEADER WRAP -->
+        <header id="header-wrap">
+            <div class="main-headerwrap container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="logo-wrap">
+                            <img src="image/asset/Atom_01_Icon___Hugeicons_Pro-removebg-preview.png" alt="logo" />
+                        </div>
+                    </div>
+                    <div class="col-lg-9 navigation-big">
+                        <nav class="navigation-wrap">
+                            <ul class="navigation-list">
+                                <li><a class="nav-link" href="dark.html">Voltar</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <button id="openmenu" class="button-menu">
+                        <i class="icofont-navigation-menu"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- EXPLORE CONTENT -->
+        <section id="explore-content" class="padtopbottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="big-text l-text da-text">EX</div>
+                        <div class="about-detailwrap offset-lg-2">
+                            <p class="title-detail">A síntese do ser</p>
+                            <h3><span class="sec-word">Radioativo</span></h3>
+                            <div class="mini-detail">
+                                <p class="energy-quote" style="border:none;padding:0;font-size:1.5rem">
+                                    "Tudo emite.Tudo absorve. Mas poucos sabem calibrar a própria frequência."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 1: Introdução Filosófica -->
+                    <div class="col-lg-12">
+                        <div class="energy-section">
+                            <h2>Introdução</h2>
+                            <p class="energy-quote">
+                                Vivemos num campo invisível de trocas constantes. Cada pensamento que tens, cada palavra que lanças e cada gesto que fazes — emite algo.
+                            </p>
+                            <div class="mini-detail">
+                                <p>
+                                    Essa energia propaga-se como ondas, como partículas. Ela não desaparece. Ela transforma, retorna, ela marca. Assim como os átomos instáveis liberam radiação para alcançar equilíbrio, nós também irradiamos o que carregamos dentro. E muitas vezes, sem consciência, passamos a vida emitindo dor, medo, raiva — sem perceber que tudo isso volta, com mais força, como um eco energético.
+                                </p>
+                                <p>
+                                    A evolução começa quando se percebe isso. O despertar acontece quando se decide escolher o que emitir.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 2: Os Três Níveis de Emissão -->
+                    <div class="col-lg-12">
+                        <div class="energy-section">
+                            <h2>Os Três Níveis da Emissão Humana</h2>
+                            
+                            <div class="emission-types">
+                                <div class="emission-card alpha">
+                                    <h3>Emissões Alfa — Pensamentos</h3>
+                                    <p>São as primeiras partículas que escapam da tua mente. Curto alcance, mas poderoso impacto interno. Se os teus pensamentos forem tóxicos, toda tua estrutura começa a corromper-se por dentro.</p>
+                                    <div class="energy-examples">
+                                        <strong>Exemplos:</strong>
+                                        <p>• Autojulgamento constante.</p>
+                                        <p>• Padrões mentais negativos repetitivos.</p>
+                                        <p>• Crenças de limitação herdadas.</p>
+                                    </div>
+                                    <div class="mini-detail">
+                                        <p><strong>Exercício prático:</strong> Mantenha um diário de autoconhecimento por uma semana, anotando padrões mentais recorrentes e sua origem.</p>
+                                    </div>
+                                    <p class="energy-quote-end">"Pensar é emitir. Repetir é irradiar."</p>
+                                </div>
+                                
+                                <div class="emission-card beta">
+                                    <h3>Emissões Beta — Palavras</h3>
+                                    <p>Palavras têm alcance médio. São vibrações organizadas, moldam relações, criam pontes ou muros. Quando falas, estás lançando uma frequência que afeta quem ouve — e volta para ti.</p>
+                                    <div class="energy-examples">
+                                        <strong>Exemplos:</strong>
+                                        <p>• A crítica constante que contamina.</p>
+                                        <p>• A palavra de encorajamento que transforma.</p>
+                                        <p>• O silêncio amargo que corta mais que grito.</p>
+                                    </div>
+                                    <div class="mini-detail">
+                                        <p><strong>Exercício prático:</strong> Pratique comunicação não-violenta por um dia, observando como suas palavras afetam as respostas que recebe.</p>
+                                    </div>
+                                    <p class="energy-quote-end">"Toda palavra é radiação com destino e memória."</p>
+                                </div>
+                                
+                                <div class="emission-card gamma">
+                                    <h3>Emissões Gama — Ações</h3>
+                                    <p>Altamente penetrantes. Atingem estruturas profundas. Tuas ações mostram o que o teu núcleo acredita. São aquilo que realmente molda o teu campo energético social.</p>
+                                    <div class="energy-examples">
+                                        <strong>Exemplos:</strong>
+                                        <p>• O gesto que salva.</p>
+                                        <p>• A escolha que rompe padrões.</p>
+                                        <p>• A atitude que prova quem tu és quando ninguém está a ver.</p>
+                                    </div>
+                                    <div class="mini-detail">
+                                        <p><strong>Exercício prático:</strong> Defina uma "ação radioativa" por semana - algo que tenha potencial de causar mudanças positivas além do seu círculo imediato.</p>
+                                    </div>
+                                    <p class="energy-quote-end">"A ação é a partícula final da tua energia. É tua radiação visível."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 3: Anatomia do Ser Radioativo -->
+                    <div class="col-lg-12">
+                        <div class="energy-section">
+                            <h2>A Anatomia do Ser Radioativo</h2>
+                            <p class="energy-quote">
+                                "Não somos apenas emissores de energia. Somos também filtros e receptores. A radiação que sustentas molda a realidade que vives."
+                            </p>
+                            <div class="mini-detail">
+                                <p>
+                                    Imagine-te como um reator emocional. Em constante atividade. Pensas → emites. Falas → influencias. Sentes → absorves. E no centro de tudo está o teu campo radioativo interior — invisível aos olhos, mas poderoso o suficiente para construir ou desintegrar a tua realidade.
+                                </p>
+                            </div>
+                            
+                            <div class="energy-anatomy">
+                                <div class="anatomy-card">
+                                    <h4>1. Emissão Interna – O Núcleo Silencioso</h4>
+                                    <p>O que dizes para ti quando ninguém está a ouvir? Esse campo representa o que carregas dentro da tua mente e da tua identidade:</p>
+                                    <ul>
+                                        <li>Pensamentos automáticos</li>
+                                        <li>Crenças enraizadas</li>
+                                        <li>Diálogo interno (autoamor ou autossabotagem)</li>
+                                        <li>Imagens que tens de ti mesmo</li>
+                                    </ul>
+                                    <div class="energy-examples">
+                                        <strong>Exemplos:</strong>
+                                        <p>"Eu não sou suficiente." → Corrói lentamente tua autoestima.</p>
+                                        <p>"Eu posso crescer, mesmo com medo." → Fortalece tua estrutura emocional.</p>
+                                    </div>
+                                    <p class="energy-quote-end">"Tudo o que pensas em silêncio, constrói o som da tua presença."</p>
+                                </div>
+                                
+                                <div class="anatomy-card">
+                                    <h4>2. Emissão Relacional – O Campo de Expansão</h4>
+                                    <p>Como tua energia afeta os outros? Esse campo representa o que emites ao mundo por meio da tua comunicação, empatia e postura social. Palavras, expressões, tom de voz, presença — tudo vibra.</p>
+                                    <div class="energy-examples">
+                                        <strong>Exemplos:</strong>
+                                        <p>Um elogio genuíno que muda o dia de alguém.</p>
+                                        <p>Uma crítica ácida que fecha portas sem que percebas.</p>
+                                        <p>Uma presença calma que pacifica o ambiente.</p>
+                                    </div>
+                                    <p class="energy-quote-end">"A tua frequência emocional é sentida antes mesmo de falares."</p>
+                                </div>
+                                
+                                <div class="anatomy-card">
+                                    <h4>3. Filtro de Recepção – A Barreira Invisível</h4>
+                                    <p>O que estás a deixar entrar? E o que estás a permitir que te afete? Esse campo é a tua capacidade de filtrar o que vem do mundo: notícias, olhares, palavras, emoções alheias.</p>
+                                    <div class="energy-examples">
+                                        <strong>Exemplos:</strong>
+                                        <p>Receber uma crítica sem se destruir por dentro.</p>
+                                        <p>Identificar quando a energia do outro não é tua — e não absorvê-la.</p>
+                                        <p>Saber dizer "não" sem culpa.</p>
+                                    </div>
+                                    <p class="energy-quote-end">"Tu não és obrigado a carregar a radiação emocional de ninguém."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 4: Teste e Transformação -->
+                    <div class="col-lg-12">
+                        <div class="energy-section">
+                            <h2>Calibrando Sua Frequência</h2>
+                            <div class="mini-detail">
+                                <p>
+                                    Porque, se não calibrares tua energia: Irás absorver o que o mundo te empurra. Irás reagir, e não criar. Irás irradiar impulsos alheios, não tua essência.
+                                </p>
+                                <p>
+                                    Calibrar tua frequência é tornar-te fonte, e não receptor passivo. É escolher teu campo de emissão, como um sintonizador. É aceitar tua radioatividade — e decidir usá-la para construir, não contaminar.
+                                </p>
+                            </div>
+                            
+                            <div class="radioactive-test">
+                                <h3>Teste Seu Nível de Radiação Pessoal</h3>
+                                <p class="mb-4">Responda mentalmente estas perguntas para avaliar seu espectro energético atual:</p>
+                                
+                                <div class="progress-container">
+                                    <h4>Autoconsciência (Meia-vida emocional)</h4>
+                                    <p>Quão rápido você supera emoções negativas?</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill alpha" style="width: 0%" data-target="75"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <h4>Influência Positiva (Alcance social)</h4>
+                                    <p>Sua energia está contaminando positivamente seu círculo?</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill beta" style="width: 0%" data-target="60"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <h4>Transformação (Potência de ação)</h4>
+                                    <p>Suas ações geram mudanças duradouras?</p>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill gamma" style="width: 0%" data-target="45"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-5">
+                                <div class="col-lg-6">
+                                    <h4>Decaimento Positivo</h4>
+                                    <div class="mini-detail">
+                                        <p>
+                                            Na física nuclear, o decaimento radioativo transforma elementos instáveis em formas mais estáveis. Na vida pessoal, podemos usar o mesmo princípio para transformar experiências negativas em aprendizado.
+                                        </p>
+                                        <p class="mt-3">
+                                            <strong>Exemplo prático:</strong><br>
+                                            Raiva (urânio instável) → Reflexão (decaimento) → Sabedoria (chumbo estável)
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <h4>Fissão & Fusão Relacional</h4>
+                                    <div class="mini-detail">
+                                        <p>
+                                            <strong>Fissão:</strong> O processo de quebrar crenças limitantes (como átomos se dividindo) para liberar energia transformadora.
+                                        </p>
+                                        <p class="mt-3">
+                                            <strong>Fusão:</strong> Conexões que geram nova energia (mentoria, trabalho em equipe) - onde o todo é maior que a soma das partes.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="energy-quote mt-5">
+                                "Ser radioativo não é ser perigoso. É saber que carregas poder invisível — e usá-lo com consciência."
+                            </p>
+                            <div class="mini-detail">
+                                <p>
+                                    Tua anatomia energética não é estática. Ela evolui, se expande, se recalibra. Mas tudo começa no momento em que decides observar o que estás a emitir, o que estás a permitir — e o que estás a tornar.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 5: Download -->
+                    <div class="col-lg-12">
+                        <div class="download-guide">
+                            <h2>Quer se aprofundar ainda mais?</h2>
+                            <div class="mini-detail">
+                                <p>
+                                    Baixe nosso "Guia do Emissor Consciente" com exercícios práticos para transformar sua energia pessoal em 30 dias.
+                                </p>
+                            </div>
+                            <a href="#" class="button-link dark-b llinks mt-4">Baixar Guia Completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="footer-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="wrap-title-foot">
+                            <h3><b>I.tonela | Radioativo210</b> - Emitindo luz em todas as direções</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="javascript/vendor/jquery.js"></script>
+    <script src="javascript/vendor/bootstrap.min.js"></script>
+    <script>
+    // Animação das barras de progresso e preloader
+    document.addEventListener('DOMContentLoaded', function() {
+        // Anima as barras de progresso
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const targetWidth = bar.getAttribute('data-target');
+            bar.style.width = targetWidth + '%';
+        });
+        
+       
+    });
+    
+    // Esconde o preloader quando tudo estiver carregado
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.querySelector('.preloader').style.opacity = '0';
+            document.querySelector('.preloader').style.visibility = 'hidden';
+            document.querySelector('.main-wrap').style.opacity = '1';
+        }, 800);
+    });
+    </script>
+</body>
+</html>
